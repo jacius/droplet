@@ -1,3 +1,5 @@
 :modes: 
   - :default: 
-    - :default:
+    - :main:
+      - :center: [240,240]
+      - :radius: 206
