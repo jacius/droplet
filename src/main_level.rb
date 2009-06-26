@@ -1,7 +1,7 @@
 require 'level'
 require 'ftor'
 
-class DefaultLevel < Level
+class MainLevel < Level
   def setup
     @background = @resource_manager.load_image('background.png')
   end
