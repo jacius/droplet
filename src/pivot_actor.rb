@@ -7,7 +7,7 @@ require 'vector2'
 class PivotActorView < ActorView
 
   def draw(target, x_offset, y_offset)
-    pos = @center + Vector2.new(x_offset, y_offset)
+    pos = actor.center + Vector2.new(x_offset, y_offset)
     rect = Rubygame::Rect.new([0,0,4,4])
     rect.center = pos.to_ary
 
@@ -19,6 +19,8 @@ end
 
 # Represents the pivot point in the center of the droplet.
 class PivotActor < Actor
+
+  attr_reader :center, :radius
 
   def setup
     @center = Vector2.new(@opts[:x], @opts[:y])
