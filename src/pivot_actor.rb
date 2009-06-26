@@ -3,8 +3,17 @@ require 'actor_view'
 
 require 'vector2'
 
-# It's invisible.
+
 class PivotActorView < ActorView
+
+  def draw(target, x_offset, y_offset)
+    pos = @center + Vector2.new(x_offset, y_offset)
+    rect = Rubygame::Rect.new([0,0,4,4])
+    rect.center = pos.to_ary
+
+    target.fill(:white, rect)
+  end
+
 end
 
 
