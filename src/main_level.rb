@@ -5,8 +5,8 @@ class MainLevel < Level
   def setup
     @background = @resource_manager.load_image('background.png')
 
-    c = opts[:center]
-    r = opts[:radius]
+    c = opts[:pivot][:center]
+    r = opts[:pivot][:radius]
 
     @pivot = create_actor :pivot_actor, :x => c[0], :y => c[1], :radius => r
 
