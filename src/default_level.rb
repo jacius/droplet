@@ -1,20 +1,12 @@
 require 'level'
 require 'ftor'
-class DemoLevel < Level
-  def setup
-    @my_actor = create_actor :my_actor
-    @my_actor.x = 10
-    @my_actor.y = 10
 
-    @stars = []
-    20.times { @stars << Ftor.new(rand(@width),rand(@height)) }
+class DefaultLevel < Level
+  def setup
+    @background = @resource_manager.load_image('background.png')
   end
 
   def draw(target, x_off, y_off)
-    target.fill [25,25,25,255]
-    for star in @stars
-      target.draw_circle_s([star.x,star.y],1,[255,255,255,255])
-    end
+    @background.blit(target.screen,[0,0])
   end
 end
-
