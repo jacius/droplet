@@ -35,21 +35,21 @@ class SamplePlantType < PlantType
   def initialize
     super()
 
-    append_rule( :maxchilds  => 3,
-                 :childsgrow => 5,
+    append_rule( :maxchilds  => 2,
+                 :childsgrow => 45,
 
                  :spread     => Math::PI * 0.8,
                  :tilt       => 0,
 
-                 :color1     => ColorRGB.new([61,133,77]),
-                 :color2     => ColorRGB.new([21,100,183]),
-                 :colorgrow  => 10,
+                 :color1     => ColorRGB.new([0.25, 0.50, 0.30]),
+                 :color2     => ColorRGB.new([0.08, 0.40, 0.70]),
+                 :colorgrow  => 50,
 
                  :maxlong    => 35,
-                 :longgrow   => 24,
+                 :longgrow   => 80,
                  
-                 :maxthick   => 5,
-                 :thickgrow  => 29 )
+                 :maxthick   => 10,
+                 :thickgrow  => 150 )
 
   end
 
