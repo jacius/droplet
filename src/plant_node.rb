@@ -48,8 +48,8 @@ class PlantNode
     rule_length
   end
 
-  def length
-    rule_length
+  def thick
+    rule_thick
   end
 
 
