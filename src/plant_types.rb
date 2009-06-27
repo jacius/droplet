@@ -9,6 +9,11 @@ class PlantType
   end
 
   def append_rule( rule )
+    case rule
+    when Hash
+      rule = PlantRule.new( rule )
+    end
+
     @rules << rule
     prev_rule = @rules[-2]
     prev_rule.next = rule if prev_rule
