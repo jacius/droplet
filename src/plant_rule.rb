@@ -1,5 +1,6 @@
 require 'util'
-require 'plantnode'
+require 'plant_node'
+
 
 class PlantRule
 
