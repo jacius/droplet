@@ -6,12 +6,14 @@ require 'vector2'
 class PlantNode
 
   def initialize( opts={} )
-    @angle    = (opts[:angle]    or 0.0 )
+    @bangle   = (opts[:angle]    or 0.0 )
+    @angle    = @bangle
     @rule     = (opts[:rule]            )
     @age      = (opts[:age]      or 0.0 )
     @children = (opts[:children] or []  )
     @parent   = (opts[:parent]          )
     @gen      = (opts[:gen]      or 0   ) # generation
+    @agit     = (opts[:agit]     or 0   ) # agitation
   end
 
   attr_accessor :rule, :age, :children, :parent, :gen
@@ -34,8 +36,18 @@ class PlantNode
 
   def grow( t )
     @age += t
+    update
     make_child if need_another_child?
     @children.each { |child| child.grow(t) }
+  end
+
+  def agitate( amount )
+    @agit += amount
+    update
+  end
+
+  def update
+    @angle = @bangle + @rule.wave(@age, @agit)
   end
 
 
