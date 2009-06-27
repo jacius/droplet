@@ -57,7 +57,7 @@ class PlantRule
   def calc_child_angle( child_num )
     side = (child_num % 2 == 0) ? -1 : 1
     nth_on_this_side = (child_num / 2 + 1).to_f
-    return @tilt + (@spread * 0.5 * (nth_on_this_side/@maxchilds))
+    return @tilt + side*(@spread * 0.5 * (nth_on_this_side/@maxchilds))
   end
 
 end
