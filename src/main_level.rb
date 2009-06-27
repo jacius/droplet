@@ -21,16 +21,17 @@ class MainLevel < Level
       create_plant SamplePlantType.new, :x => p.x, :y => p.y
     end
 
-    @pivot.input_manager.reg KeyDownEvent, K_SPACE do
-      @plants.each { |plant| plant.grow( 1.0 ) }
-    end
-
   end
 
   attr_reader :pivot
 
   def draw(target, x_off, y_off)
     @background.blit(target.screen,[0,0])
+  end
+
+
+  def update( time )
+    @plants.each { |plant| plant.grow( time * 0.01 ) }    
   end
 
 
