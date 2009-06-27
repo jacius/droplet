@@ -1,6 +1,9 @@
 require 'level'
 require 'vector2'
 
+require 'plant_types'
+
+
 class MainLevel < Level
   def setup
     @background = @resource_manager.load_image('background.png')
@@ -10,6 +13,18 @@ class MainLevel < Level
 
     @pivot = create_actor :pivot_actor, :x => c[0], :y => c[1], :radius => r
 
+    @plants = []
+
+
+    @pivot.input_manager.reg MouseDownEvent, :left do |event|
+      p = @pivot.nearest_point( event.pos )
+      create_plant SamplePlantType.new, :x => p.x, :y => p.y
+    end
+
+    @pivot.input_manager.reg KeyDownEvent, K_SPACE do
+      @plants.each { |plant| plant.tick }
+    end
+
   end
 
   attr_reader :pivot
@@ -17,4 +32,10 @@ class MainLevel < Level
   def draw(target, x_off, y_off)
     @background.blit(target.screen,[0,0])
   end
+
+
+  def create_plant( type, opts={} )
+    @plants << create_actor( :plant_actor, opts.merge(:type => type) )
+  end
+
 end
