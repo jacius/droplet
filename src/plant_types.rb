@@ -12,6 +12,8 @@ class PlantType
     case rule
     when Hash
       rule = PlantRule.new( rule )
+    when PlantRule
+      rule = rule.dup
     end
 
     @rules << rule
