@@ -23,7 +23,9 @@ class PlantNode
     base = pos
     tip = pos+v
     
-    surf.draw_line_s( base.to_a, tip.to_a, @color, @thick*scale )
+    if( thick*scale > 0 )
+      surf.draw_line_s( base.to_a, tip.to_a, color, thick * scale )
+    end
 
     @children.each { |child| child.draw( surf, tip, v.angle, scale ) }
   end
