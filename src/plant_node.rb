@@ -44,6 +44,7 @@ class PlantNode
   def agitate( amount )
     @agit += amount
     update
+    @children.each { |child| child.agitate( amount ) }
   end
 
   def update
@@ -91,7 +92,7 @@ class PlantNode
   end
 
   def make_child
-    newchild = @rule.make_child_node( @children.size, @gen )
+    newchild = @rule.make_child_node( @children.size, @gen, {:agit => @agit} )
     @children << newchild
     newchild.parent = self
   end
