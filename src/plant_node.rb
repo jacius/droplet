@@ -74,7 +74,7 @@ class PlantNode
   end
 
   def need_another_child?
-    _rule_childs > @children.length
+    rule_childs > @children.length
   end
 
   def make_child
