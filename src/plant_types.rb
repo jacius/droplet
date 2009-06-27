@@ -49,7 +49,11 @@ class SamplePlantType < PlantType
                  :longgrow   => 80,
                  
                  :maxthick   => 10,
-                 :thickgrow  => 150 )
+                 :thickgrow  => 150,
+
+                 :waveamp    => Math::PI * 0.2,
+                 :wavefreq   => 1.0,
+                 :waveagit   => 15.0)
 
   end
 
