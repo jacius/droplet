@@ -33,6 +33,7 @@ class SamplePlantType < PlantType
   ColorRGB = Rubygame::Color::ColorRGB
 
   def initialize
+    super()
 
     append_rule( :maxchilds  => 3,
                  :childsgrow => 5,
