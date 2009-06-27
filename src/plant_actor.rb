@@ -27,8 +27,8 @@ class PlantActor < Actor
   attr_reader :pos, :angle, :type, :root
 
 
-  def tick
-    @root.tick
+  def grow( t )
+    @root.grow( t )
   end
 
 end

@@ -22,7 +22,7 @@ class MainLevel < Level
     end
 
     @pivot.input_manager.reg KeyDownEvent, K_SPACE do
-      @plants.each { |plant| plant.tick }
+      @plants.each { |plant| plant.grow( 1.0 ) }
     end
 
   end

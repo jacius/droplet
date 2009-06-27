@@ -31,10 +31,10 @@ class PlantNode
   end
 
 
-  def tick
-    @age += 1
+  def grow( t )
+    @age += t
     make_child if need_another_child?
-    @children.each { |child| child.tick }
+    @children.each { |child| child.grow(t) }
   end
 
 
