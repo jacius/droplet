@@ -21,6 +21,10 @@ class PlantType
     prev_rule.next = rule if prev_rule
   end
 
+  def first_node
+    PlantNode.new( :rule  =>  @rules[0] )
+  end
+
 end
 
 
