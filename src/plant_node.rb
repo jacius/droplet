@@ -6,12 +6,12 @@ require 'vector2'
 class PlantNode
 
   def initialize( opts={} )
-    @angle    = opts[:angle]    or 0.0
-    @rule     = opts[:rule]
-    @age      = opts[:age]      or 0.0
-    @children = opts[:children] or []
-    @parent   = opts[:parent]
-    @gen      = opts[:gen]      or 0 # generation
+    @angle    = (opts[:angle]    or 0.0 )
+    @rule     = (opts[:rule]            )
+    @age      = (opts[:age]      or 0.0 )
+    @children = (opts[:children] or []  )
+    @parent   = (opts[:parent]          )
+    @gen      = (opts[:gen]      or 0   ) # generation
   end
 
   attr_accessor :rule, :age, :children, :parent, :gen
