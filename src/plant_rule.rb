@@ -22,11 +22,16 @@ class PlantRule
 
     @maxthick   = opts[:maxthick].to_f   # Max thickness
     @thickgrow  = opts[:thickgrow].to_f  # Age for maxthick
+
+    @waveamp    = opts[:waveamp].to_f    # Max wave amplitude (radians)
+    @wavefreq   = opts[:wavefreq].to_f   # Max wave frequency (Hz)
+    @waveagit   = opts[:waveagit].to_f   # Agitation level for max waves
+
   end
 
   attr_accessor :next, :maxchilds, :childsgrow, :spread, :tilt,
                 :color1, :color2, :colorgrow, :maxlong, :longgrow,
-                :maxthick, :thickgrow
+                :maxthick, :thickgrow, :maxwave, :waveagit
 
 
   def childs(age)
@@ -44,6 +49,14 @@ class PlantRule
 
   def thick(age)
     return lerp(age, 0.0, @thickgrow, 0.0, @maxthick)
+  end
+
+
+  def wave(age, agit)
+    amp = lerp(agit, 0.0, @waveagit, 0.0, @waveamp)
+    frq = lerp(agit, 0.0, @waveagit, 0.0, @wavefreq)
+ 
+    return (amp * Math.sin( 2 * Math::PI * frq * age))
   end
 
 
