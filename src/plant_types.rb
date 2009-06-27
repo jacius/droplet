@@ -22,3 +22,30 @@ class PlantType
   end
 
 end
+
+
+class SamplePlantType < PlantType
+
+  ColorRGB = Rubygame::Color::ColorRGB
+
+  def initialize
+
+    append_rule( :maxchilds  => 3,
+                 :childsgrow => 5,
+
+                 :spread     => Math::PI * 0.8,
+                 :tilt       => 0,
+
+                 :color1     => ColorRGB.new([61,133,77]),
+                 :color2     => ColorRGB.new([21,100,183]),
+                 :colorgrow  => 10,
+
+                 :maxlong    => 35,
+                 :longgrow   => 24,
+                 
+                 :maxthick   => 5,
+                 :thickgrow  => 29 )
+
+  end
+
+end
