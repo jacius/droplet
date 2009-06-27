@@ -22,6 +22,7 @@ class PlantActor < Actor
     @angle = @level.pivot.pos2angle(@pos) + Math::PI
     @type = @opts[:type]
     @root = @type.first_node
+    @root.agitate(@opts[:agit]) if @opts[:agit]
   end
 
   attr_reader :pos, :angle, :type, :root
@@ -29,6 +30,10 @@ class PlantActor < Actor
 
   def grow( t )
     @root.grow( t )
+  end
+
+  def agitate( amount )
+    @root.agitate( amount )
   end
 
 end
