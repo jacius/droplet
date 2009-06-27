@@ -18,7 +18,7 @@ class MainLevel < Level
 
     @pivot.input_manager.reg MouseDownEvent, :left do |event|
       p = @pivot.nearest_point( event.pos )
-      create_plant SamplePlantType.new, :x => p.x, :y => p.y
+      create_plant SamplePlantType.new, :x => p.x, :y => p.y, :agit => 5.0
     end
 
   end
