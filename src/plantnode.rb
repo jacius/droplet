@@ -25,6 +25,10 @@ class PlantRule
     @thickgrow  = opts[:thickgrow].to_f  # Age for maxthick
   end
 
+  attr_accessor :next, :maxchilds, :childsgrow, :spread, :tilt,
+                :color1, :color2, :colorgrow, :maxlong, :longgrow,
+                :maxthick, :thickgrow
+
 
   def childs(age)
     return lerp(age, 0.0, @childsgrow, 0.0, @maxchilds).to_i
