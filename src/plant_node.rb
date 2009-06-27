@@ -11,7 +11,7 @@ class PlantNode
     @age      = opts[:age]      or 0.0
     @children = opts[:children] or []
     @parent   = opts[:parent]
-    @gen      = opts[:gen]              # generation
+    @gen      = opts[:gen]      or 0 # generation
   end
 
   attr_accessor :rule, :age, :children, :parent, :gen
