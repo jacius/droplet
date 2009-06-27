@@ -1,5 +1,5 @@
 
-require 'plantnode'
+require 'plant_rule'
 
 
 class PlantType
