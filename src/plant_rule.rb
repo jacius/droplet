@@ -48,7 +48,7 @@ class PlantRule
 
 
   def make_child_node( child_num = 0, gen = 0 )
-    PlantNode.new( :angle => calc_child_angle( child_num+1 )
+    PlantNode.new( :angle => calc_child_angle( child_num+1 ),
                    :gen   => gen+1,
                    :rule => (@next or self) )
   end
