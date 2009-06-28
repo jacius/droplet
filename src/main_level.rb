@@ -28,7 +28,18 @@ class MainLevel < Level
 
         # Ignore clicks that are too far from the outside ring
         if (dist > rad - 50) and (dist < rad + 25)
-          create_random_plant( event )
+
+          retries = 3
+          begin
+            if( retries > 0 )
+              create_random_plant( event )
+            end
+          rescue Rubygame::SDLError => e
+            retries -= 1
+            # Try again, different sound maybe?
+            retry
+          end
+
         end
 
       end
