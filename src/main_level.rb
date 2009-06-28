@@ -39,6 +39,15 @@ class MainLevel < Level
 
     @info_open = false
 
+
+    soundsdir = File.join( File.dirname(__FILE__), "..", "data", "sounds" )
+
+    @sounds = []
+    @sounds += Dir.glob( File.join(soundsdir, "*.ogg") )
+    @sounds += Dir.glob( File.join(soundsdir, "*.mp3") )
+    @sounds += Dir.glob( File.join(soundsdir, "*.wav") )
+    @sounds.collect! { |s| File.basename(s) }
+
   end
 
   attr_reader :pivot, :info_open
@@ -81,10 +90,7 @@ class MainLevel < Level
       :spread => spread, :tilt => tilt,
       :gens => gens }
 
-    sounds = ["chimes_high_loop", "chimes_med_loop", "sheepbells_loop",
-              "rain_loop", "thin_ether_c3", "thin_ether_gs3",
-              "whispering_ears_e5", "organism_c4",]
-    soundname = sounds[ rand(sounds.length) ]
+    soundname = @sounds[ rand(@sounds.length) ]
 
     create_plant( SamplePlantType.new(opts),
                   :x => p.x, :y => p.y,
