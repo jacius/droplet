@@ -27,11 +27,12 @@ class PlantRule
     @wavefreq   = opts[:wavefreq].to_f   # Max wave frequency (Hz)
     @waveagit   = opts[:waveagit].to_f   # Agitation level for max waves
 
+    @agitdec    = opts[:agitdec].to_f    # Agitation decay rate
   end
 
   attr_accessor :next, :maxchilds, :childsgrow, :spread, :tilt,
                 :color1, :color2, :colorgrow, :maxlong, :longgrow,
-                :maxthick, :thickgrow, :maxwave, :waveagit
+                :maxthick, :thickgrow, :maxwave, :waveagit, :agitdec
 
 
   def childs(age)

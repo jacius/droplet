@@ -53,7 +53,9 @@ class SamplePlantType < PlantType
 
                  :waveamp    => Math::PI * 0.05,
                  :wavefreq   => 1.0,
-                 :waveagit   => 15.0}
+                 :waveagit   => 15.0,
+
+                 :agitdec    => 0.98 }
 
     4.times{  append_rule( main_rule )  }
 

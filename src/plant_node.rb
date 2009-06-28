@@ -36,6 +36,8 @@ class PlantNode
 
   def grow( t )
     @age += t
+    @agit *= @rule.agitdec ** t
+
     update
     make_child if need_another_child?
     @children.each { |child| child.grow(t) }
