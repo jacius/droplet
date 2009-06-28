@@ -12,6 +12,7 @@ class MainLevel < Level
     r = opts[:pivot][:radius]
 
     @pivot = create_actor :pivot_actor, :x => c[0], :y => c[1], :radius => r
+    @pivot.visible = false
 
     @plants = []
 
