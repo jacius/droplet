@@ -39,9 +39,8 @@ class PlantActor < Actor
     # Scale factor for agitation.
     @agit_scale = 0.01
 
-    # Making this up for now.
     @size = 0.0
-    @maxsize = 130.0
+    @maxsize = calculate_max_size
 
   end
 
@@ -62,9 +61,8 @@ class PlantActor < Actor
 
 
   def grow( t )
-    # Making this up for now.
-    @size += t*10 if @size < @maxsize
     @root.grow( t )
+    @size = calculate_size
   end
 
   def agitate( amount )
@@ -98,5 +96,36 @@ class PlantActor < Actor
     size = @size / @maxsize
     @sound.volume = force * size
   end
+
+
+  def calculate_size
+    accum = 0.0
+    recurse_limit = 10
+    node = @root
+    
+    while (not node.nil?) and (recurse_limit > 0)
+      accum += node.length
+      recurse_limit -= 1
+      node = node.children[0]
+    end
+
+    return accum
+  end
+
+
+  def calculate_max_size
+    accum = 0.0
+    recurse_limit = 10
+    rule = @root.rule
+    
+    while (not rule.nil?) and (recurse_limit > 0)
+      accum += rule.maxlong
+      recurse_limit -= 1
+      rule = rule.next
+    end
+
+    return accum
+  end
+
 
 end
