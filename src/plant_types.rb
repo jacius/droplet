@@ -42,26 +42,26 @@ class SamplePlantType < PlantType
       
 
     main_rule = {:maxchilds  => 3,
-                 :childsgrow => 45,
+                 :childsgrow => 4.5,
 
                  :spread     => Math::PI * 0.8,
                  :tilt       => 0,
 
                  :color1     => hsl([opts[:hue1], opts[:sat1], opts[:lum1]]),
                  :color2     => hsl([opts[:hue2], opts[:sat2], opts[:lum2]]),
-                 :colorgrow  => 50,
+                 :colorgrow  => 5,
 
                  :maxlong    => 35,
-                 :longgrow   => 80,
+                 :longgrow   => 8,
                  
                  :maxthick   => 10,
-                 :thickgrow  => 150,
+                 :thickgrow  => 15,
 
                  :waveamp    => Math::PI * 0.05,
-                 :wavefreq   => 0.4,
+                 :wavefreq   => 4,
                  :waveagit   => 15.0,
 
-                 :agitdec    => 0.98 }.merge(opts)
+                 :agitdec    => 0.9 }.merge(opts)
 
     gens = opts[:gens]
 
