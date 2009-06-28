@@ -2,6 +2,7 @@ require 'actor'
 require 'actor_view'
 
 require 'vector2'
+require 'sounds'
 require 'plant_types'
 
 
@@ -23,6 +24,8 @@ class PlantActor < Actor
     @type = @opts[:type]
     @root = @type.first_node
     @root.agitate(@opts[:agit]) if @opts[:agit]
+
+    @sound = Sounds[@opts[:soundname]] if @opts[:soundname]
 
     @input_manager.reg MouseMotionEvent do |event|
       mouse_agitate( event )
