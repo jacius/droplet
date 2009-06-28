@@ -28,10 +28,7 @@ class MainLevel < Level
   attr_reader :pivot
 
   def draw(target, x_off, y_off)
-    if @first_draw
       set_title( target )
-      @first_draw = false
-    end
 
     @background.blit(target.screen,[0,0])
   end
@@ -39,6 +36,7 @@ class MainLevel < Level
 
   def update( time )
     @plants.each { |plant| plant.update( time * 0.001 ) }
+    @plants.delete_if { |plant| plant.root.age < 0 }
   end
 
 
@@ -79,7 +77,7 @@ class MainLevel < Level
 
 
   def set_title( screen )
-    screen.title = "Droplet"
+    screen.title = "Droplet (%d plants)"%@plants.size
   end
 
 end

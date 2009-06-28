@@ -15,9 +15,11 @@ class PlantNode
     @gen      = (opts[:gen]      or 0   ) # generation
     @agit     = (opts[:agit]     or 0   ) # agitation
     @side     = (opts[:side]     or 1   )
+    @withering   = false
+    @wither_rate = 2.0
   end
 
-  attr_accessor :rule, :age, :children, :parent, :gen, :agit
+  attr_accessor :rule, :age, :children, :parent, :gen, :agit, :withering
 
 
   def draw( surf, pos, rot, scale )
@@ -59,14 +61,28 @@ class PlantNode
 
 
   def grow( t )
-    @age += t
-    @agit *= @rule.agitdec ** t
-    @agit = 0.0 if( @agit < 0.05 )
+
+    unless @withering 
+      @age += t
+      @agit *= @rule.agitdec ** t
+      @agit = 0.0 if( @agit < 0.05 )
+    else
+      # grow fast in reverse
+      @age -= t*@wither_rate
+
+      @agit *= (@rule.agitdec*0.8) ** (t*@wither_rate)
+      @agit = 0.0 if( @agit < 0.05 )
+
+      if( @age < 0 )
+        @children = []
+      end
+    end
 
     update
     make_child if need_another_child?
     @children.each { |child| child.grow(t) }
   end
+
 
   def agitate( amount )
     @agit = [@agit + amount, @rule.waveagit].min
@@ -74,9 +90,16 @@ class PlantNode
     @children.each { |child| child.agitate( amount ) }
   end
 
+
   def update
     a = @bangle + @rule.wave(@age, @agit)
     @angle = lerp( size, 0.0, 1.0, 0.0, a )
+  end
+
+
+  def wither
+    @withering = true
+    @children.each { |child| child.wither }
   end
 
 
@@ -103,6 +126,7 @@ class PlantNode
 
 
   def need_another_child?
+    return false if @withering
     @rule.childs(@age) > @children.length
   end
 

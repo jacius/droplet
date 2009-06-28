@@ -36,6 +36,10 @@ class PlantActor < Actor
       mouse_agitate( event )
     end
 
+    @input_manager.reg MouseDownEvent, :right do |event|
+      wither( event )
+    end
+
     # Scale factor for agitation.
     @agit_scale = 0.01
 
@@ -65,10 +69,10 @@ class PlantActor < Actor
     @size = calculate_size
   end
 
+
   def agitate( amount )
     @root.agitate( amount )
   end
-
 
   def mouse_agitate( event )
     pos = Vector2.new( *event.pos )
@@ -127,5 +131,15 @@ class PlantActor < Actor
     return accum
   end
 
+
+  def wither( event )
+    click = Vector2.new( *event.pos )
+
+    dist_from_root = (click - @pos).magnitude
+    
+    if( dist_from_root <= 25.0 )
+      @root.wither
+    end
+  end
 
 end
