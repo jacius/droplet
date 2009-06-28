@@ -69,7 +69,7 @@ class PlantNode
   end
 
   def agitate( amount )
-    @agit += amount
+    @agit = [@agit + amount, @rule.waveagit].min
     update
     @children.each { |child| child.agitate( amount ) }
   end
