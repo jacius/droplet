@@ -23,17 +23,57 @@ class PlantActor < Actor
     @type = @opts[:type]
     @root = @type.first_node
     @root.agitate(@opts[:agit]) if @opts[:agit]
+
+    @input_manager.reg MouseDownEvent, :right do |event|
+      mouse_agitate( event )
+    end
+
+    # Scale factor for agitation.
+    @agit_scale = 0.4
+
+    # Making this up for now.
+    @size = 0.0
+    @maxsize = 130.0
+
   end
 
   attr_reader :pos, :angle, :type, :root
 
 
   def grow( t )
+    # Making this up for now.
+    @size += t if @size < @maxsize
     @root.grow( t )
   end
 
   def agitate( amount )
     @root.agitate( amount )
+  end
+
+
+  def mouse_agitate( event )
+    pos = Vector2.new( *event.pos )
+
+    # We only care about movement inside the droplet.
+    if @level.pivot.inside_radius( pos )
+
+      dist_from_me = (pos - @pos).magnitude
+
+      # We also only care about movement near us.
+      if( dist_from_me <= @size )
+
+        power = 1.0
+
+        # I wanted it to be based on mouse movement, but Gamebox
+        # doesn't work with MouseMotionEvent. :(
+        # 
+        # power *= Vector2.new( *event.rel ).magnitude
+
+        agitate( power * (dist_from_me / @size) )
+
+      end
+
+    end
   end
 
 end
