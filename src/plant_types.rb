@@ -52,16 +52,16 @@ class SamplePlantType < PlantType
                  :colorgrow  => 5,
 
                  :maxlong    => 35,
-                 :longgrow   => 8,
+                 :longgrow   => 10,
                  
-                 :maxthick   => 10,
+                 :maxthick   => 7,
                  :thickgrow  => 15,
 
-                 :waveamp    => Math::PI * 0.05,
-                 :wavefreq   => 4,
-                 :waveagit   => 15.0,
+                 :waveamp    => Math::PI * 0.03,
+                 :wavefreq   => 3,
+                 :waveagit   => 25.0,
 
-                 :agitdec    => 0.9 }.merge(opts)
+                 :agitdec    => 0.85 }.merge(opts)
 
     gens = opts[:gens]
 

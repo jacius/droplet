@@ -63,17 +63,22 @@ class MainLevel < Level
     hue2 = (hue1 + 0.2)%1.0
     val1 = 0.3 + rand*0.3
     val2 = val1 - 0.2
-    long = 35 + rand*10
 
     i = rand(3)
     gens = [3,4,5][i]
     maxchilds = [4,3,2][i]
 
+    maxlong = gens * 6 + rand*10
+    spread = 0.2 + (6 - gens) * Math::PI * 0.5
+
+    tilt = (rand*2 - 1) * 0.2   # rand between -0.2 and +0.2
+
     opts = { 
       :hue1 => hue1, :val1 => val1,
       :hue2 => hue2, :val2 => val2,
-      :maxlong => long,
+      :maxlong => maxlong,
       :maxchilds => maxchilds,
+      :spread => spread, :tilt => tilt,
       :gens => gens }
 
     sounds = ["chimes_high_loop", "chimes_med_loop", "sheepbells_loop",
