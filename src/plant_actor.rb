@@ -35,11 +35,17 @@ class PlantActor < Actor
     @update_counter = 0.0
 
     @input_manager.reg MouseMotionEvent do |event|
-      mouse_agitate( event )
+      # Ignore mouse events while info is open.
+      unless @level.info_open
+        mouse_agitate( event )
+      end
     end
 
     @input_manager.reg MouseDownEvent, :right do |event|
-      wither( event )
+      # Ignore mouse events while info is open.
+      unless @level.info_open
+        wither( event )
+      end
     end
 
     # Scale factor for agitation.
