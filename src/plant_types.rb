@@ -52,7 +52,7 @@ class SamplePlantType < PlantType
                  :thickgrow  => 150,
 
                  :waveamp    => Math::PI * 0.05,
-                 :wavefreq   => 1.0,
+                 :wavefreq   => 0.4,
                  :waveagit   => 15.0,
 
                  :agitdec    => 0.98 }
