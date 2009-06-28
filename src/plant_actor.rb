@@ -24,7 +24,7 @@
 require 'actor'
 require 'actor_view'
 
-require 'vector2'
+require 'util'
 require 'sounds'
 require 'plant_types'
 

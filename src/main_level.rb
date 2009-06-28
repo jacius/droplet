@@ -22,7 +22,7 @@
 
 
 require 'level'
-require 'vector2'
+require 'util'
 
 require 'plant_types'
 

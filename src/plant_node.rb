@@ -22,7 +22,6 @@
 
 
 require 'util'
-require 'vector2'
 
 
 class PlantNode

@@ -21,6 +21,10 @@
 #++
 
 
+class Vector2 < Rubygame::Ftor
+end
+
+
 # Linear interpolation (and, if clamp=false, extrapolation)
 # 
 # t = current time
