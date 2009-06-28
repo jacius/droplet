@@ -23,3 +23,17 @@ def lerp( t, ta, tb, va, vb, clamp=true )
   return (blend * (vb - va) + va)
   
 end
+
+
+def rgb( color )
+  Rubygame::Color::ColorRGB.new( color )
+end
+
+def hsv( color )
+  Rubygame::Color::ColorHSV.new( color )
+end
+
+def hsl( color )
+  Rubygame::Color::ColorHSL.new( color )
+end
+
