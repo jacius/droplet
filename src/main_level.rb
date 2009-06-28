@@ -6,6 +6,8 @@ require 'plant_types'
 
 class MainLevel < Level
   def setup
+    @first_draw = true
+
     @background = @resource_manager.load_image('background.png')
 
     c = opts[:pivot][:center]
@@ -26,6 +28,11 @@ class MainLevel < Level
   attr_reader :pivot
 
   def draw(target, x_off, y_off)
+    if @first_draw
+      set_title( target )
+      @first_draw = false
+    end
+
     @background.blit(target.screen,[0,0])
   end
 
@@ -68,6 +75,11 @@ class MainLevel < Level
 
   def create_plant( type, opts={} )
     @plants << create_actor( :plant_actor, opts.merge(:type => type) )
+  end
+
+
+  def set_title( screen )
+    screen.title = "Droplet"
   end
 
 end
