@@ -23,6 +23,9 @@ class MainLevel < Level
       create_random_plant( event )
     end
 
+    @info = create_actor :info_actor
+    @info.close
+
   end
 
   attr_reader :pivot
@@ -78,6 +81,17 @@ class MainLevel < Level
 
   def set_title( screen )
     screen.title = "Droplet (%d plants)"%@plants.size
+  end
+
+
+  def open_info
+    @info.open
+    @plants.each { |plant| plant.visible = false }
+  end
+
+  def close_info
+    @info.close
+    @plants.each { |plant| plant.visible = true }
   end
 
 end
