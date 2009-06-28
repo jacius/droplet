@@ -49,7 +49,7 @@ class MainLevel < Level
 
 
   def update( time )
-    @plants.each { |plant| plant.grow( time * 0.01 ) }    
+    @plants.each { |plant| plant.grow( time * 0.001 ) }
   end
 
 
