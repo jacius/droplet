@@ -26,6 +26,11 @@ class PlantActor < Actor
     @root.agitate(@opts[:agit]) if @opts[:agit]
 
     @sound = Sounds[@opts[:soundname]] if @opts[:soundname]
+    @sound.volume = 0.0
+    @sound.play( :repeats => -1 )
+
+    @update_every = 0.1 #secs
+    @update_counter = 0.0
 
     @input_manager.reg MouseMotionEvent do |event|
       mouse_agitate( event )
@@ -45,6 +50,14 @@ class PlantActor < Actor
 
   def update( time )
     grow( time )
+
+    @update_counter += time
+    if( @update_counter >= @update_every )
+
+      adjust_volume
+
+      @update_counter -= @update_every
+    end
   end
 
 
@@ -77,6 +90,11 @@ class PlantActor < Actor
       end
 
     end
+  end
+
+
+  def adjust_volume
+    @sound.volume = [0.05, @root.agit/@root.rule.waveagit].min
   end
 
 end
