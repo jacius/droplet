@@ -55,7 +55,13 @@ class MainLevel < Level
       :maxchilds => maxchilds,
       :gens => gens }
 
-    create_plant( SamplePlantType.new(opts), :x => p.x, :y => p.y )
+    sounds = ["chimes_high_loop", "chimes_loop1",
+              "rain_loop", "sheepbells_loop"]
+    soundname = sounds[ rand(sounds.length) ]
+
+    create_plant( SamplePlantType.new(opts),
+                  :x => p.x, :y => p.y,
+                  :soundname => soundname )
   end
 
 
