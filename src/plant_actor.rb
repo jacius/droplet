@@ -43,6 +43,11 @@ class PlantActor < Actor
   attr_reader :pos, :angle, :type, :root
 
 
+  def update( time )
+    grow( time )
+  end
+
+
   def grow( t )
     # Making this up for now.
     @size += t*10 if @size < @maxsize
