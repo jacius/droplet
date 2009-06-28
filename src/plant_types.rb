@@ -35,7 +35,7 @@ class SamplePlantType < PlantType
   def initialize
     super()
 
-    append_rule( :maxchilds  => 2,
+    main_rule = {:maxchilds  => 3,
                  :childsgrow => 45,
 
                  :spread     => Math::PI * 0.8,
@@ -51,9 +51,11 @@ class SamplePlantType < PlantType
                  :maxthick   => 10,
                  :thickgrow  => 150,
 
-                 :waveamp    => Math::PI * 0.2,
+                 :waveamp    => Math::PI * 0.05,
                  :wavefreq   => 1.0,
-                 :waveagit   => 15.0)
+                 :waveagit   => 15.0}
+
+    4.times{  append_rule( main_rule )  }
 
   end
 
