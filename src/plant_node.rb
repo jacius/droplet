@@ -17,7 +17,7 @@ class PlantNode
     @side     = (opts[:side]     or 1   )
   end
 
-  attr_accessor :rule, :age, :children, :parent, :gen
+  attr_accessor :rule, :age, :children, :parent, :gen, :agit
 
 
   def draw( surf, pos, rot, scale )
