@@ -108,9 +108,9 @@ class PlantNode
     get = @gen
     extra_opts = {:agit => @agit}
 
-    opts = { :angle => calc_child_angle( child_num+1 ),
-      :gen   => gen+1,
-      :rule  => @rule.next }
+    opts = { :angle => calc_child_angle( child_num ),
+             :gen   => gen+1,
+             :rule  => @rule.next }
 
     newchild = PlantNode.new( opts.merge(extra_opts) )
 
@@ -120,10 +120,24 @@ class PlantNode
 
 
   def calc_child_angle( child_num )
-    side = (child_num % 2 == 0) ? -1 : 1
+    child_num = child_num.to_i
+
+    spread = @rule.spread
+    tilt   = @rule.tilt
+    max    = @rule.maxchilds
+
+    if( max.odd? )
+      if child_num == 0
+        return tilt          # first child goes "straight" (plus tilt)
+      else
+        child_num -= 1          # Adjust to ignore first child
+      end
+    end
+
+    side = child_num.even? ? -1 : 1
     nth_on_this_side = (child_num / 2 + 1).to_f
-    return @rule.tilt + side * (@rule.spread * 0.5 *
-                                (nth_on_this_side/@rule.maxchilds))
+    return tilt + side * (0.5 * spread * (nth_on_this_side/max))
+
   end
 
 end
