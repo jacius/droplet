@@ -100,12 +100,30 @@ class PlantNode
     @rule.childs(@age) > @children.length
   end
 
+
   def make_child
-    newchild = @rule.make_child_node( @children.size, @gen, {:agit => @agit} )
-    unless newchild.nil?
-      @children << newchild
-      newchild.parent = self
-    end
+    return if @rule.next.nil?
+
+    child_num = @children.size
+    get = @gen
+    extra_opts = {:agit => @agit}
+
+    opts = { :angle => calc_child_angle( child_num+1 ),
+      :gen   => gen+1,
+      :rule  => @rule.next }
+
+    newchild = PlantNode.new( opts.merge(extra_opts) )
+
+    @children << newchild
+    newchild.parent = self
+  end
+
+
+  def calc_child_angle( child_num )
+    side = (child_num % 2 == 0) ? -1 : 1
+    nth_on_this_side = (child_num / 2 + 1).to_f
+    return @rule.tilt + side * (@rule.spread * 0.5 *
+                                (nth_on_this_side/@rule.maxchilds))
   end
 
 end

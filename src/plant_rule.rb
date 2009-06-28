@@ -59,22 +59,4 @@ class PlantRule
     return (amp * Math.sin( 2 * Math::PI * @wavefreq * age))
   end
 
-
-  def make_child_node( child_num = 0, gen = 0, extra_opts={} )
-    return nil if @next.nil?
-
-    opts = { :angle => calc_child_angle( child_num+1 ),
-             :gen   => gen+1,
-             :rule  => @next }
-
-    PlantNode.new( opts.merge(extra_opts) )
-  end
-
-
-  def calc_child_angle( child_num )
-    side = (child_num % 2 == 0) ? -1 : 1
-    nth_on_this_side = (child_num / 2 + 1).to_f
-    return @tilt + side*(@spread * 0.5 * (nth_on_this_side/@maxchilds))
-  end
-
 end
