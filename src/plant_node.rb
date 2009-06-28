@@ -14,6 +14,7 @@ class PlantNode
     @parent   = (opts[:parent]          )
     @gen      = (opts[:gen]      or 0   ) # generation
     @agit     = (opts[:agit]     or 0   ) # agitation
+    @side     = (opts[:side]     or 1   )
   end
 
   attr_accessor :rule, :age, :children, :parent, :gen
@@ -107,12 +108,19 @@ class PlantNode
     opts = { :angle => calc_child_angle( @children.size ),
              :gen   => @gen+1,
              :rule  => @rule.next,
-             :agit  => @agit}
+             :agit  => @agit,
+             :side  => calc_child_side( @children.size ) }
 
     newchild = PlantNode.new( opts )
 
     @children << newchild
     newchild.parent = self
+  end
+
+
+
+  def calc_child_side( child_num )
+    side = child_num.even? ? -1 : 1
   end
 
 
@@ -131,9 +139,10 @@ class PlantNode
       end
     end
 
-    side = child_num.even? ? -1 : 1
+    side = calc_child_side( child_num )
+
     nth_on_this_side = (child_num / 2 + 1).to_f
-    return tilt + side * (0.5 * spread * (nth_on_this_side/max))
+    return @side * (tilt + side * 0.5 * spread * nth_on_this_side / max)
 
   end
 
