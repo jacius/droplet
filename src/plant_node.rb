@@ -28,9 +28,32 @@ class PlantNode
     @children.each { |child| child.draw( surf, tip, v.angle, scale ) }
 
     if( thick*scale > 0 )
-      surf.draw_line_s( base.to_a, tip.to_a, color, thick * scale )
+      # surf.draw_line_s( base.to_a, tip.to_a, color, thick * scale )
+
+      pthick = @parent ? @parent.thick : thick
+      draw_branch( surf, base, pthick, tip, thick, color )
     end
 
+  end
+
+
+  def draw_branch( surf, basepos, basethick, tippos,  tipthick, color )
+    diff = (tippos - basepos)
+    lengthwise = diff.unit
+    widthwise  = lengthwise.normal
+
+    points = [ basepos - lengthwise * basethick *0.2, # bottom
+               basepos - widthwise  * basethick,      # bottom-left
+               tippos  - widthwise  * tipthick,       # top-left
+               tippos  + lengthwise * tipthick,       # top
+               tippos  + widthwise  * tipthick,       # top-right
+               basepos + widthwise  * basethick,      # bottom-right
+             ]
+
+    points.collect! { |p| p.to_ary }
+
+    surf.draw_polygon_s( points, color ) # solid
+    surf.draw_polygon_a( points, color ) # smooth
   end
 
 
