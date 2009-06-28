@@ -18,7 +18,25 @@ class MainLevel < Level
 
     @pivot.input_manager.reg MouseDownEvent, :left do |event|
       p = @pivot.nearest_point( event.pos )
-      create_plant SamplePlantType.new, :x => p.x, :y => p.y, :agit => 5.0
+
+      hue1 = rand
+      hue2 = (hue1 + 0.2)%1.0
+      val1 = 0.3 + rand*0.3
+      val2 = val1 - 0.2
+      long = 35 + rand*10
+
+      i = rand(3)
+      gens = [3,4,5][i]
+      maxchilds = [4,3,2][i]
+
+      opts = { 
+        :hue1 => hue1, :val1 => val1,
+        :hue2 => hue2, :val2 => val2,
+        :maxlong => long,
+        :maxchilds => maxchilds,
+        :gens => gens }
+
+      create_plant( SamplePlantType.new(opts), :x => p.x, :y => p.y )
     end
 
   end
