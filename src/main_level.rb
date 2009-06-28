@@ -20,15 +20,20 @@ class MainLevel < Level
 
 
     @pivot.input_manager.reg MouseDownEvent, :left do |event|
-      create_random_plant( event )
+      # Ignore clicks while info is open.
+      unless @info_open
+        create_random_plant( event )
+      end
     end
 
     @info = create_actor :info_actor
     @info.close
 
+    @info_open = false
+
   end
 
-  attr_reader :pivot
+  attr_reader :pivot, :info_open
 
   def draw(target, x_off, y_off)
       set_title( target )
@@ -85,11 +90,13 @@ class MainLevel < Level
 
 
   def open_info
+    @info_open = true
     @info.open
     @plants.each { |plant| plant.visible = false }
   end
 
   def close_info
+    @info_open = false
     @info.close
     @plants.each { |plant| plant.visible = true }
   end
