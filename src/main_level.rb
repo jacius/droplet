@@ -22,7 +22,15 @@ class MainLevel < Level
     @pivot.input_manager.reg MouseDownEvent, :left do |event|
       # Ignore clicks while info is open.
       unless @info_open
-        create_random_plant( event )
+
+        dist = @pivot.dist_from_center(event.pos)
+        rad = @pivot.radius
+
+        # Ignore clicks that are too far from the outside ring
+        if (dist > rad - 50) and (dist < rad + 25)
+          create_random_plant( event )
+        end
+
       end
     end
 
