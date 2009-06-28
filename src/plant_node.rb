@@ -75,7 +75,8 @@ class PlantNode
   end
 
   def update
-    @angle = @bangle + @rule.wave(@age, @agit)
+    a = @bangle + @rule.wave(@age, @agit)
+    @angle = lerp( size, 0.0, 1.0, 0.0, a )
   end
 
 
