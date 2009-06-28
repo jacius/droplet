@@ -135,9 +135,13 @@ class PlantActor < Actor
   def wither( event )
     click = Vector2.new( *event.pos )
 
-    dist_from_root = (click - @pos).magnitude
-    
-    if( dist_from_root <= 25.0 )
+    tip = @pos + Vector2.new_am(@angle, @root.length)
+
+    dist_from_base = (click - @pos).magnitude
+    dist_from_tip  = (click - tip).magnitude
+
+    if( (dist_from_base + dist_from_tip) <= 
+          (@root.length + @root.thick) )
       @root.wither
     end
   end
