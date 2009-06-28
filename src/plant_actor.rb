@@ -94,7 +94,8 @@ class PlantActor < Actor
 
 
   def adjust_volume
-    @sound.volume = [0.05, @root.agit/@root.rule.waveagit].min
+    force = @root.agit/@root.rule.waveagit
+    @sound.volume = force
   end
 
 end
