@@ -1,0 +1,11 @@
+
+These files are licensed under the Creative Commons
+Attribution-Share Alike 3.0 Unported license.
+See http://creativecommons.org/licenses/by-sa/3.0/ for details.
+
+* background.png
+* background.svg
+* helpcredits.png
+* helpcredits.svg
+
+They were created by John Croisant on June 28, 2009.
