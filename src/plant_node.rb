@@ -104,15 +104,12 @@ class PlantNode
   def make_child
     return if @rule.next.nil?
 
-    child_num = @children.size
-    get = @gen
-    extra_opts = {:agit => @agit}
+    opts = { :angle => calc_child_angle( @children.size ),
+             :gen   => @gen+1,
+             :rule  => @rule.next,
+             :agit  => @agit}
 
-    opts = { :angle => calc_child_angle( child_num ),
-             :gen   => gen+1,
-             :rule  => @rule.next }
-
-    newchild = PlantNode.new( opts.merge(extra_opts) )
+    newchild = PlantNode.new( opts )
 
     @children << newchild
     newchild.parent = self
