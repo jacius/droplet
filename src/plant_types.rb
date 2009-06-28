@@ -31,8 +31,14 @@ end
 
 class SamplePlantType < PlantType
 
-  def initialize
+  def initialize( opts={} )
     super()
+
+    opts = {
+      :hue1 => 0.37, :sat1 => 0.33, :lum1 => 0.38,
+      :hue2 => 0.58, :sat2 => 0.79, :lum2 => 0.39,
+    }.merge(opts)
+      
 
     main_rule = {:maxchilds  => 3,
                  :childsgrow => 45,
@@ -40,8 +46,8 @@ class SamplePlantType < PlantType
                  :spread     => Math::PI * 0.8,
                  :tilt       => 0,
 
-                 :color1     => hsl(rgb([0.25, 0.50, 0.30])),
-                 :color2     => hsl(rgb([0.08, 0.40, 0.70])),
+                 :color1     => hsl([opts[:hue1], opts[:sat1], opts[:lum1]]),
+                 :color2     => hsl([opts[:hue2], opts[:sat2], opts[:lum2]]),
                  :colorgrow  => 50,
 
                  :maxlong    => 35,
@@ -54,7 +60,7 @@ class SamplePlantType < PlantType
                  :wavefreq   => 0.4,
                  :waveagit   => 15.0,
 
-                 :agitdec    => 0.98 }
+                 :agitdec    => 0.98 }.merge(opts)
 
     gens = 4
 
@@ -62,10 +68,10 @@ class SamplePlantType < PlantType
       thick = main_rule[:maxthick] * 0.66**i
 
       c1 = main_rule[:color1]
-      c1 = hsl( [c1.h + 0.05*i, c1.s, c1.l * 1.1**i] )
+      c1 = hsl( [(c1.h + 0.05*i)%1.0, c1.s, c1.l * 1.1**i] )
 
       c2 = main_rule[:color2]
-      c2 = hsl( [c2.h - 0.12*i, c2.s*0.75**i, c2.l * 1.1**i] )
+      c2 = hsl( [(c2.h - 0.12*i)%1.0, c2.s*0.75**i, c2.l * 1.1**i] )
 
       append_rule( main_rule.merge( :maxthick => thick,
                                     :color1   => rgb(c1),
