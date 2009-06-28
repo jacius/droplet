@@ -52,6 +52,11 @@ class PivotActor < Actor
     return (pos - @center).magnitude
   end
 
+  def inside_radius( pos )
+    pos = _make_vector2(pos)
+    return (dist_from_center(pos) <= @radius)
+  end
+
 
   private
 
