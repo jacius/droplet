@@ -36,7 +36,7 @@ class MainLevel < Level
 
   def update( time )
     @plants.each { |plant| plant.update( time * 0.001 ) }
-    @plants.delete_if { |plant| plant.root.age < 0 }
+    @plants.delete_if { |plant| plant.root.health == 0 }
   end
 
 

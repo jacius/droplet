@@ -15,11 +15,14 @@ class PlantNode
     @gen      = (opts[:gen]      or 0   ) # generation
     @agit     = (opts[:agit]     or 0   ) # agitation
     @side     = (opts[:side]     or 1   )
+
     @withering   = false
-    @wither_rate = 2.0
+    @wither_rate = 0.3
+    @health      = 1.0
   end
 
-  attr_accessor :rule, :age, :children, :parent, :gen, :agit, :withering
+  attr_accessor :rule, :age, :children, :parent, :gen, :agit,
+                :withering, :health
 
 
   def draw( surf, pos, rot, scale )
@@ -62,19 +65,16 @@ class PlantNode
 
   def grow( t )
 
-    unless @withering 
-      @age += t
-      @agit *= @rule.agitdec ** t
-      @agit = 0.0 if( @agit < 0.05 )
-    else
-      # grow fast in reverse
-      @age -= t*@wither_rate
+    @age += t
+    @agit *= @rule.agitdec ** t
+    @agit = 0.0 if( @agit < 0.05 )
 
-      @agit *= (@rule.agitdec*0.8) ** (t*@wither_rate)
-      @agit = 0.0 if( @agit < 0.05 )
-
-      if( @age < 0 )
+    if @withering 
+      if( @health <= 0.01 )
+        @health = 0
         @children = []
+      else
+        @health -= @wither_rate * t
       end
     end
 
@@ -113,15 +113,15 @@ class PlantNode
   end
 
   def length
-    @rule.length(@age)
+    @rule.length(@age) * @health
   end
 
   def thick
-    @rule.thick(@age)
+    @rule.thick(@age) * @health
   end
 
   def size
-    @rule.length(@age) / @rule.maxlong
+    self.length / @rule.maxlong
   end
 
 
