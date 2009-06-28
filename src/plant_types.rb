@@ -1,5 +1,6 @@
 
 require 'plant_rule'
+require 'util'
 
 
 class PlantType
@@ -30,8 +31,6 @@ end
 
 class SamplePlantType < PlantType
 
-  ColorRGB = Rubygame::Color::ColorRGB
-
   def initialize
     super()
 
@@ -41,8 +40,8 @@ class SamplePlantType < PlantType
                  :spread     => Math::PI * 0.8,
                  :tilt       => 0,
 
-                 :color1     => ColorRGB.new([0.25, 0.50, 0.30]),
-                 :color2     => ColorRGB.new([0.08, 0.40, 0.70]),
+                 :color1     => hsl(rgb([0.25, 0.50, 0.30])),
+                 :color2     => hsl(rgb([0.08, 0.40, 0.70])),
                  :colorgrow  => 50,
 
                  :maxlong    => 35,
@@ -61,7 +60,16 @@ class SamplePlantType < PlantType
 
     gens.times{ |i|
       thick = main_rule[:maxthick] * 0.66**i
-      append_rule( main_rule.merge( :maxthick => thick ) ) 
+
+      c1 = main_rule[:color1]
+      c1 = hsl( [c1.h + 0.05*i, c1.s, c1.l * 1.1**i] )
+
+      c2 = main_rule[:color2]
+      c2 = hsl( [c2.h - 0.12*i, c2.s*0.75**i, c2.l * 1.1**i] )
+
+      append_rule( main_rule.merge( :maxthick => thick,
+                                    :color1   => rgb(c1),
+                                    :color2   => rgb(c2) )) 
     }
 
   end
