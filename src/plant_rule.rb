@@ -35,6 +35,7 @@ class PlantRule
 
 
   def childs(age)
+    return 0 if @next.nil?
     return lerp(age, 0.0, @childsgrow, 0.0, @maxchilds).to_i
   end
 
@@ -61,9 +62,12 @@ class PlantRule
 
 
   def make_child_node( child_num = 0, gen = 0, extra_opts={} )
+    return nil if @next.nil?
+
     opts = { :angle => calc_child_angle( child_num+1 ),
              :gen   => gen+1,
-             :rule => (@next or self) }
+             :rule  => @next }
+
     PlantNode.new( opts.merge(extra_opts) )
   end
 

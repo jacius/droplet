@@ -93,8 +93,10 @@ class PlantNode
 
   def make_child
     newchild = @rule.make_child_node( @children.size, @gen, {:agit => @agit} )
-    @children << newchild
-    newchild.parent = self
+    unless newchild.nil?
+      @children << newchild
+      newchild.parent = self
+    end
   end
 
 end
