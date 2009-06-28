@@ -60,6 +60,7 @@ class PlantNode
   def grow( t )
     @age += t
     @agit *= @rule.agitdec ** t
+    @agit = 0.0 if( @agit < 0.05 )
 
     update
     make_child if need_another_child?
