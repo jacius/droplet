@@ -6,7 +6,7 @@ module Sounds
     [File.join( File.dirname(__FILE__), "..", "data", "sounds" )]
 
   def self.[]( key )
-    Rubygame::Sound["#{key}.ogg"].dup
+    Rubygame::Sound[key].dup
   end
 
 end
