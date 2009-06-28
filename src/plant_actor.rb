@@ -42,7 +42,7 @@ class PlantActor < Actor
 
   def grow( t )
     # Making this up for now.
-    @size += t if @size < @maxsize
+    @size += t*10 if @size < @maxsize
     @root.grow( t )
   end
 
