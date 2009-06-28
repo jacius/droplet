@@ -37,3 +37,13 @@ def hsl( color )
   Rubygame::Color::ColorHSL.new( color )
 end
 
+
+class Numeric
+  def even?
+    return (self % 2 == 0)
+  end
+
+  def odd?
+    not even?
+  end
+end
