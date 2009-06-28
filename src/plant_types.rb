@@ -37,6 +37,7 @@ class SamplePlantType < PlantType
     opts = {
       :hue1 => 0.37, :sat1 => 0.33, :lum1 => 0.38,
       :hue2 => 0.58, :sat2 => 0.79, :lum2 => 0.39,
+      :gens => 4,
     }.merge(opts)
       
 
@@ -62,7 +63,7 @@ class SamplePlantType < PlantType
 
                  :agitdec    => 0.98 }.merge(opts)
 
-    gens = 4
+    gens = opts[:gens]
 
     gens.times{ |i|
       thick = main_rule[:maxthick] * 0.66**i
@@ -71,7 +72,7 @@ class SamplePlantType < PlantType
       c1 = hsl( [(c1.h + 0.05*i)%1.0, c1.s, c1.l * 1.1**i] )
 
       c2 = main_rule[:color2]
-      c2 = hsl( [(c2.h - 0.12*i)%1.0, c2.s*0.75**i, c2.l * 1.1**i] )
+      c2 = hsl( [(c2.h - 0.05*i)%1.0, c2.s*0.75**i, c2.l * 1.1**i] )
 
       append_rule( main_rule.merge( :maxthick => thick,
                                     :color1   => rgb(c1),
