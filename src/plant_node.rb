@@ -96,6 +96,10 @@ class PlantNode
     @rule.thick(@age)
   end
 
+  def size
+    @rule.length(@age) / @rule.maxlong
+  end
+
 
   def need_another_child?
     @rule.childs(@age) > @children.length
