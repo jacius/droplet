@@ -56,39 +56,22 @@ class PlantNode
     Vector2.new_am( @angle + extra_rot, self.length )
   end
 
+
   def color
-    rule_color
-  end
-
-  def length
-    rule_length
-  end
-
-  def thick
-    rule_thick
-  end
-
-
-  private  
-
-  def rule_childs
-    @rule.childs(@age)
-  end
-
-  def rule_color
     @rule.color(@age)
   end
 
-  def rule_length
+  def length
     @rule.length(@age)
   end
 
-  def rule_thick
+  def thick
     @rule.thick(@age)
   end
 
+
   def need_another_child?
-    rule_childs > @children.length
+    @rule.childs(@age) > @children.length
   end
 
   def make_child
