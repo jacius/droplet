@@ -24,12 +24,12 @@ class PlantActor < Actor
     @root = @type.first_node
     @root.agitate(@opts[:agit]) if @opts[:agit]
 
-    @input_manager.reg MouseDownEvent, :right do |event|
+    @input_manager.reg MouseMotionEvent do |event|
       mouse_agitate( event )
     end
 
     # Scale factor for agitation.
-    @agit_scale = 0.4
+    @agit_scale = 0.01
 
     # Making this up for now.
     @size = 0.0
@@ -62,12 +62,7 @@ class PlantActor < Actor
       # We also only care about movement near us.
       if( dist_from_me <= @size )
 
-        power = 1.0
-
-        # I wanted it to be based on mouse movement, but Gamebox
-        # doesn't work with MouseMotionEvent. :(
-        # 
-        # power *= Vector2.new( *event.rel ).magnitude
+        power = @agit_scale * Vector2.new( *event.rel ).magnitude
 
         agitate( power * (dist_from_me / @size) )
 
