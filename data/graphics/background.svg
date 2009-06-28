@@ -65,13 +65,6 @@
          offset="1"
          id="stop3195" />
     </linearGradient>
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 526.18109 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="744.09448 : 526.18109 : 1"
-       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
-       id="perspective10" />
     <filter
        inkscape:collect="always"
        id="filter3165">
@@ -120,6 +113,26 @@
        fy="239.58333"
        r="6.25"
        gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter3429"
+       x="-0.0048243724"
+       width="1.0096487"
+       y="-0.95013333"
+       height="2.9002667">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.89075"
+         id="feGaussianBlur3431" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3489">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="8.3559911"
+         id="feGaussianBlur3491" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -129,13 +142,13 @@
      gridtolerance="10000"
      guidetolerance="10"
      objecttolerance="10"
-     inkscape:pageopacity="1"
+     inkscape:pageopacity="0.72156863"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.44"
-     inkscape:cx="256.7662"
-     inkscape:cy="234.64815"
+     inkscape:zoom="1"
+     inkscape:cx="373.68106"
+     inkscape:cy="324.14069"
      inkscape:document-units="px"
-     inkscape:current-layer="droplet"
+     inkscape:current-layer="g3493"
      showgrid="false"
      inkscape:window-width="1214"
      inkscape:window-height="921"
@@ -167,6 +180,13 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       style="opacity:1;color:#000000;fill:#151640;fill-opacity:0.96078432;fill-rule:nonzero;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3243"
+       width="640"
+       height="480"
+       x="0"
+       y="0" />
     <g
        id="droplet">
       <path
@@ -210,5 +230,50 @@
          d="M 246.66667,239.58333 A 6.25,6.25 0 1 1 234.16667,239.58333 A 6.25,6.25 0 1 1 246.66667,239.58333 z"
          transform="matrix(0.5636365,0,0,0.5636365,104.49242,104.96212)" />
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:64.05245972px;font-style:normal;font-weight:bold;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="628.06409"
+       y="63.821365"
+       id="text2414"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2416"
+         x="628.06409"
+         y="63.821365"
+         style="font-size:64.05245972px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;font-family:Flow;-inkscape-font-specification:Flow">Droplet</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32.82982635px;font-style:normal;font-weight:bold;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="615.82196"
+       y="458.11484"
+       id="text3200"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3202"
+         x="615.82196"
+         y="458.11484"
+         style="font-size:32.82982635px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#ffffff;font-family:GeosansLight;-inkscape-font-specification:GeosansLight Medium"
+         dy="0 0 0 0 0 1.8881531 -1.8881531">Help / Credits</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:27.45145416px;font-style:normal;font-weight:bold;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="534.30792"
+       y="99.546669"
+       id="text3204"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3206"
+         x="537.19086"
+         y="99.546669"
+         style="font-size:22.53549767px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;font-family:GeosansLight;-inkscape-font-specification:GeosansLight Medium">A 72-hour game </tspan><tspan
+         sodipodi:role="line"
+         x="534.30792"
+         y="131.29065"
+         style="font-size:26.29141235px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;font-family:GeosansLight;-inkscape-font-specification:GeosansLight Medium"
+         id="tspan3208"
+         dy="-6.25986">by John Croisant</tspan></text>
+    <g
+       id="g3493" />
   </g>
 </svg>
