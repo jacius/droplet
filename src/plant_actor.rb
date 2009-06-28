@@ -9,8 +9,10 @@ require 'plant_types'
 class PlantActorView < ActorView
 
   def draw(target, x_off, y_off)
-    offset = Vector2.new(x_off, y_off)
-    actor.root.draw( target, actor.pos+offset, actor.angle, 1.0 )
+    if( actor.visible )
+      offset = Vector2.new(x_off, y_off)
+      actor.root.draw( target, actor.pos+offset, actor.angle, 1.0 )
+    end
   end
 
 end
