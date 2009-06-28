@@ -1,0 +1,46 @@
+
+These files are licensed under the Creative Commons Sampling Plus 1.0
+license. See http://creativecommons.org/licenses/sampling+/1.0/ for
+details.
+
+
+* chimes_high_loop.ogg
+* chimes_med_loop.ogg
+* organism_c4.ogg
+* rain_loop.ogg
+* sheepbells_loop.ogg
+* thin_ether_c3.ogg
+* thin_ether_gs3.ogg
+* whispering_ears_e5.ogg
+
+
+They were remixed by John Croisant on June 28, 2009 to create
+seamless loops. My thanks to the creators and the freesound
+project for offering the source samples:
+
+
+* "chimes" by DJ Chronos
+  <http://www.freesound.org/samplesViewSingle.php?id=31600>
+
+* "Our Chimes" by memigh1
+  <http://www.freesound.org/samplesViewSingle.php?id=14274>
+
+* "rbh rain 04" by RHumphries
+  <http://www.freesound.org/samplesViewSingle.php?id=2522>
+
+* "Melodrone multisample 03 - Organism C4" by Jovica.
+  <http://www.freesound.org/samplesViewSingle.php?id=48779>
+
+* "sheepbells_day" by dobroide
+  <http://www.freesound.org/samplesViewSingle.php?id=4219>
+
+* "Melodrone multisample 14 - Thin Ether C3" by Jovica.
+  <http://www.freesound.org/samplesViewSingle.php?id=51563>
+
+* "Melodrone multisample 14 - Thin Ether G#3" by Jovica.
+  <http://www.freesound.org/samplesViewSingle.php?id=51568>
+
+* "Pad 006 - Whispering Ears E5" by Jovica.
+  <http://www.freesound.org/samplesViewSingle.php?id=52490>
+
+
