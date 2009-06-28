@@ -57,7 +57,12 @@ class SamplePlantType < PlantType
 
                  :agitdec    => 0.98 }
 
-    4.times{  append_rule( main_rule )  }
+    gens = 4
+
+    gens.times{ |i|
+      thick = main_rule[:maxthick] * 0.66**i
+      append_rule( main_rule.merge( :maxthick => thick ) ) 
+    }
 
   end
 
