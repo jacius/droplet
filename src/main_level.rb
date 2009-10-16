@@ -32,6 +32,7 @@ class MainLevel < Level
     @first_draw = true
 
     @background = @resource_manager.load_image('background.png')
+    @bgtex = make_gl_texture(@background)
 
     c = opts[:pivot][:center]
     r = opts[:pivot][:radius]
@@ -87,9 +88,8 @@ class MainLevel < Level
   attr_reader :pivot, :info_open
 
   def draw(target, x_off, y_off)
-      set_title( target )
-
-    @background.blit(target.screen,[0,0])
+    set_title( target )
+    draw_rect( @bgtex, target.screen.size )
   end
 
 

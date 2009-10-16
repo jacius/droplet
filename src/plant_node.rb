@@ -77,10 +77,18 @@ class PlantNode
                basepos + widthwise  * basethick,      # bottom-right
              ]
 
-    points.collect! { |p| p.to_ary }
+    points.collect! { |p| p.to_ary + [0] }
 
-    surf.draw_polygon_s( points, color ) # solid
-    surf.draw_polygon_a( points, color ) # smooth
+    color = color.to_rgba_ary
+
+    glDisable(GL_TEXTURE_2D)
+
+    glPushMatrix
+      glColor( *color )
+      glBegin(GL_TRIANGLE_FAN)
+        points.each { |point| glVertex( *point ) }
+      glEnd
+    glPopMatrix
   end
 
 

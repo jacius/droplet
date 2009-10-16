@@ -2,3 +2,4 @@
 :sound: true
 :fullscreen: false
 :screen_resolution: [640, 480]
+:opengl: true

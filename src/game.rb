@@ -4,7 +4,14 @@ class Game
     :mode_manager
 
   def setup
-#    @sound_manager.play :current_rider
+    w,h = @wrapped_screen.width, @wrapped_screen.height
+
+    glViewport( 0, 0, w, h )
+    glShadeModel(GL_FLAT)
+
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    glOrtho(0, w, h, 0, 0, 100) # upside down to match SDL
 
     @mode_manager.change_mode_to :default
   end
@@ -15,8 +22,16 @@ class Game
   end
 
   def draw
+    glClearColor(0.0, 0.0, 0.0, 1.0)
+    glClear(GL_COLOR_BUFFER_BIT)
+
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+
     @mode_manager.draw @wrapped_screen
-    @wrapped_screen.flip
+
+    glFlush()
+    Rubygame::GL.swap_buffers
   end
 
 end

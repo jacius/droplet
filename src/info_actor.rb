@@ -25,11 +25,12 @@ class InfoActorView < ActorView
 
   def setup
     @image = actor.resource_manager.load_image('helpcredits.png')
+    @tex = make_gl_texture(@image)
   end
 
   def draw(target, x_off, y_off)
     if( actor.visible )
-      @image.blit( target.screen, [0,0] )
+      draw_rect( @bgtex, target.screen.size )
     end
   end
 
